@@ -41,3 +41,14 @@ services:
       - elasticsearch
     environment:
       LOGGING_QUIET: "true"
+
+  logstash:
+    build: docker/logstash
+    depends_on:
+      - elasticsearch
+      - mysql
+    environment:
+      LAST_RUN_METADATA_PATH: /usr/share/logstash/.logstash_jdbc_last_run_offer
+      STATEMENT_FILEPATH: /usr/share/logstash/sql/offers_import.sql
+      TRACKING_COLUMN: modified
+      TRACKING_COLUMN_TYPE: timestamp
