@@ -13,7 +13,7 @@ services:
       MYSQL_ROOT_PASSWORD: test
     volumes:
       - "/var/lib/mysql"
-      - "docker/mysql/initdb.d:/docker-entrypoint-initdb.d:cached"
+      - "./docker/mysql/initdb.d:/docker-entrypoint-initdb.d:cached"
 
   elasticsearch:
     build:
